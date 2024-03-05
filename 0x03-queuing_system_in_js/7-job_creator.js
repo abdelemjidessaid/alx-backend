@@ -56,7 +56,7 @@ for (const jobInfo of jobs) {
   job
     .on('enqueue', () => console.log(`Notification job created: ${job.id}`))
     .on('complete', () => console.log(`Notification job ${job.id} completed`))
-    .on('failed', (error) => console.log(`Notification job ${job.id} failed: ${error}`))
-    .on('progress', (progress, job) => console.log(`Notification job ${job.id} ${progress} complete`))
+    .on('failed', (error) => console.log(`Notification job ${job.id} failed: ${error.message || error.toString()}`))
+    .on('progress', (progress, data) => console.log(`Notification job ${job.id} ${progress}% complete`))
     .save();
 }
